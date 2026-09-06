@@ -3,6 +3,7 @@ import { photos } from './data/photos';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import StorybookIntro from './components/StorybookIntro';
+import FloatingMemories from './components/FloatingMemories';
 import FeaturedStory from './components/FeaturedStory';
 import HorizontalScrollGallery from './components/HorizontalScrollGallery';
 import ChildhoodMemoriesGrid from './components/ChildhoodMemoriesGrid';
@@ -35,7 +36,6 @@ export default function App() {
     setActivePhoto(photos[nextIndex]);
   };
 
-  const heroPhoto = photos.find(p => p.id === 15) || photos[14];
   const storybookPhoto = photos.find(p => p.id === 2) || photos[1];
   const finalePhoto = photos.find(p => p.id === 17) || photos[photos.length - 1];
 
@@ -55,10 +55,9 @@ export default function App() {
 
       {/* Main Visual Sections */}
       <main>
-        {/* Fullscreen Hero */}
+        {/* Fullscreen Master Hero */}
         <Hero 
           photos={photos}
-          heroPhoto={heroPhoto} 
           onOpenLightbox={handleOpenLightbox} 
         />
 
@@ -68,19 +67,25 @@ export default function App() {
           onOpenLightbox={handleOpenLightbox} 
         />
 
+        {/* Animated Keepsake: Floating Polaroids & Dynamic Motion Spotlight */}
+        <FloatingMemories 
+          photos={photos} 
+          onOpenLightbox={handleOpenLightbox} 
+        />
+
         {/* Chapter 02: Featured Asymmetrical Compositions */}
         <FeaturedStory 
           photos={photos} 
           onOpenLightbox={handleOpenLightbox} 
         />
 
-        {/* Chapter 03: Moments in Motion (35mm Film Strip Reel) */}
+        {/* Chapter 03: Moments in Motion (35mm Studio Reel) */}
         <HorizontalScrollGallery 
           photos={photos} 
           onOpenLightbox={handleOpenLightbox} 
         />
 
-        {/* Chapter 04: Filterable Storybook Memory Grid */}
+        {/* Chapter 04: The Complete 18-Photo Archive Grid */}
         <ChildhoodMemoriesGrid 
           photos={photos} 
           onOpenLightbox={handleOpenLightbox} 

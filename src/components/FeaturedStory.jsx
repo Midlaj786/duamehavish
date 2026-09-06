@@ -1,81 +1,74 @@
 import React from 'react';
-import { Sparkles, Maximize2 } from 'lucide-react';
+import { Sparkles, Maximize2, Heart } from 'lucide-react';
 
 export default function FeaturedStory({ photos, onOpenLightbox }) {
-  const storyPhotos = photos.filter(p => [3, 4, 5].includes(p.id));
+  const storyPhotos = photos.filter(p => [3, 4, 15].includes(p.id));
+  const primary = storyPhotos[0] || photos[2];
+  const secondary = storyPhotos[1] || photos[3];
+  const tertiary = storyPhotos[2] || photos[14];
 
   return (
-    <section style={{ backgroundColor: 'var(--bg-secondary)', padding: '8rem 4rem' }}>
+    <section className="featured-story-section">
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
-        <div style={{ textAlignment: 'left', marginBottom: '4rem', maxWidth: '700px' }}>
-          <span className="handwritten" style={{ fontSize: '1.8rem', color: 'var(--accent-gold-dark)' }}>
+        <div className="featured-story-header">
+          <span className="handwritten" style={{ fontSize: '1.9rem', color: 'var(--accent-gold-dark)' }}>
             Chapter 02 • Sunlit Moments
           </span>
-          <h2 className="font-serif" style={{ fontSize: 'clamp(2.2rem, 3.5vw, 3.5rem)', color: 'var(--text-primary)', marginTop: '0.5rem' }}>
+          <h2 className="font-serif" style={{ fontSize: 'clamp(2.2rem, 3.8vw, 3.6rem)', color: 'var(--text-primary)', marginTop: '0.4rem' }}>
             Asymmetrical Visual Storytelling
           </h2>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', marginTop: '0.8rem', maxWidth: '650px', lineHeight: '1.75' }}>
+            Unposed elegance and authentic laughter framed in natural ambient light — capturing memories as they naturally unfold.
+          </p>
         </div>
 
         <div className="overlap-container">
           {/* Primary Featured Photo */}
-          {storyPhotos[0] && (
+          {primary && (
             <div 
-              className="overlap-image-primary image-reveal-wrapper"
-              onClick={() => onOpenLightbox(storyPhotos[0])}
-              style={{ cursor: 'pointer', position: 'relative' }}
+              className="overlap-image-primary image-reveal-wrapper perspective-card"
+              onClick={() => onOpenLightbox(primary)}
             >
               <img 
-                src={storyPhotos[0].src} 
-                alt={storyPhotos[0].title} 
+                src={primary.src} 
+                onError={(e) => { if (primary.altSrc) e.currentTarget.src = primary.altSrc; }}
+                alt={primary.title} 
                 className="editorial-img"
               />
-              <div 
-                style={{
-                  position: 'absolute',
-                  bottom: '1.5rem',
-                  left: '1.5rem',
-                  background: 'rgba(250, 247, 242, 0.9)',
-                  backdropFilter: 'blur(8px)',
-                  padding: '0.8rem 1.4rem',
-                  borderRadius: '30px',
-                  boxShadow: 'var(--shadow-sm)'
-                }}
-              >
-                <div className="font-serif" style={{ fontSize: '1.2rem' }}>{storyPhotos[0].title}</div>
-                <div className="handwritten" style={{ fontSize: '1.1rem' }}>{storyPhotos[0].annotation}</div>
+              <div className="overlap-caption-glass">
+                <div className="font-serif" style={{ fontSize: '1.35rem', color: 'var(--text-primary)', fontWeight: '600' }}>
+                  {primary.title}
+                </div>
+                <div className="handwritten" style={{ fontSize: '1.15rem', color: 'var(--accent-gold-dark)', marginTop: '0.2rem' }}>
+                  {primary.annotation}
+                </div>
               </div>
             </div>
           )}
 
           {/* Secondary Overlapping Photo */}
-          {storyPhotos[1] && (
+          {secondary && (
             <div 
-              className="overlap-image-secondary image-reveal-wrapper"
-              onClick={() => onOpenLightbox(storyPhotos[1])}
-              style={{ cursor: 'pointer', position: 'relative' }}
+              className="overlap-image-secondary image-reveal-wrapper perspective-card"
+              onClick={() => onOpenLightbox(secondary)}
             >
               <img 
-                src={storyPhotos[1].src} 
-                alt={storyPhotos[1].title} 
+                src={secondary.src} 
+                onError={(e) => { if (secondary.altSrc) e.currentTarget.src = secondary.altSrc; }}
+                alt={secondary.title} 
                 className="editorial-img"
               />
-              <div 
-                style={{
-                  position: 'absolute',
-                  top: '1.5rem',
-                  right: '1.5rem',
-                  background: 'rgba(26, 24, 22, 0.85)',
-                  color: '#FAF7F2',
-                  padding: '0.5rem 1rem',
-                  borderRadius: '20px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  fontSize: '0.85rem'
-                }}
-              >
+              <div className="expand-pill-badge">
                 <Maximize2 size={14} />
                 <span>Click to Expand</span>
+              </div>
+              <div className="overlap-caption-glass-dark">
+                <div className="font-serif" style={{ fontSize: '1.2rem', color: '#FAF7F2' }}>
+                  {secondary.title}
+                </div>
+                <div className="handwritten" style={{ fontSize: '1.05rem', color: 'var(--accent-champagne)' }}>
+                  {secondary.annotation}
+                </div>
               </div>
             </div>
           )}

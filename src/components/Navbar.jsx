@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AudioPlayer from './AudioPlayer';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Heart } from 'lucide-react';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -21,32 +21,38 @@ export default function Navbar() {
         style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.75rem' }}
       >
         <Sparkles size={20} color="var(--accent-gold)" />
-        <span className="font-serif" style={{ fontSize: '1.4rem', letterSpacing: '0.08em', fontWeight: '500' }}>
+        <span className="font-serif" style={{ fontSize: '1.45rem', letterSpacing: '0.08em', fontWeight: '500' }}>
           DUA MEHAVISH
         </span>
-        <span style={{ fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.2em', opacity: 0.7, borderLeft: '1px solid currentColor', paddingLeft: '0.75rem' }}>
-          Visual Stories
+        <span className="brand-sub-badge">
+          Editorial Storybook
         </span>
       </div>
 
-      <nav style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
+      <nav className="nav-links-wrap" style={{ display: 'flex', alignItems: 'center', gap: '2.2rem' }}>
         <a 
           href="#story" 
-          style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.9rem', letterSpacing: '0.05em', transition: 'color 0.3s' }}
+          className="nav-link"
         >
           Story
         </a>
         <a 
-          href="#moments" 
-          style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.9rem', letterSpacing: '0.05em', transition: 'color 0.3s' }}
+          href="#animated-showcase" 
+          className="nav-link"
         >
-          Moments
+          Motion Keepsake
+        </a>
+        <a 
+          href="#moments" 
+          className="nav-link"
+        >
+          35mm Reel
         </a>
         <a 
           href="#gallery" 
-          style={{ textDecoration: 'none', color: 'inherit', fontSize: '0.9rem', letterSpacing: '0.05em', transition: 'color 0.3s' }}
+          className="nav-link"
         >
-          Gallery
+          18 Masterpieces
         </a>
 
         <AudioPlayer />

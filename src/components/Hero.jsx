@@ -1,19 +1,12 @@
-import React from 'react';
-import { ChevronDown, Star, Maximize2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ChevronDown, Star, Maximize2, Sparkles } from 'lucide-react';
 
-export default function Hero({ onOpenLightbox }) {
-  // Explicitly set pathu 18.jpeg as the primary hero photograph
-  const photo = {
-    id: 18,
-    src: '/photos/pathu 18.jpeg',
-    altSrc: '/photos/pathu-18.jpeg',
-    title: 'Dua Mehavish — Hero Masterpiece',
-    subtitle: 'Chapter I — Pure Wonder',
-    date: 'Golden Dawn',
-    category: 'Portraits',
-    annotation: 'Dua Mehavish’s radiant hero portrait 👑✨',
-    description: 'The crowning hero portrait of Dua Mehavish, capturing pure wonder and eternal elegance.'
-  };
+export default function Hero({ photos, onOpenLightbox }) {
+  // Hero flagship portraits
+  const heroShowcasePhotos = photos.filter(p => [18, 13, 1, 17].includes(p.id));
+  const [currentIdx, setCurrentIdx] = useState(0);
+
+  const heroPhoto = heroShowcasePhotos[currentIdx] || photos[0];
 
   return (
     <section 
@@ -30,7 +23,7 @@ export default function Hero({ onOpenLightbox }) {
         justifyContent: 'flex-end'
       }}
     >
-      {/* Full Viewport Photography (pathu 18.jpeg) */}
+      {/* Full Viewport Photography */}
       <div 
         className="hero-image-wrapper"
         style={{
@@ -43,26 +36,28 @@ export default function Hero({ onOpenLightbox }) {
         }}
       >
         <img 
-          src={photo.src} 
-          onError={(e) => { e.currentTarget.src = photo.altSrc; }}
-          alt="Dua Mehavish Full Viewport Hero (pathu 18.jpeg)" 
+          key={heroPhoto.id}
+          src={heroPhoto.src} 
+          onError={(e) => { if (heroPhoto.altSrc) e.currentTarget.src = heroPhoto.altSrc; }}
+          alt={`Dua Mehavish — ${heroPhoto.title}`} 
+          className="hero-active-image"
           style={{
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            objectPosition: 'center 15%', /* Aligns Dua's face perfectly in view */
+            objectPosition: heroPhoto.id === 18 ? 'center 15%' : 'center center',
             transform: 'scale(1.02)',
-            animation: 'kenBurns 25s infinite alternate ease-in-out',
+            animation: 'kenBurns 24s infinite alternate ease-in-out',
             filter: 'brightness(0.92) contrast(1.04)'
           }}
         />
 
-        {/* Soft Bottom-Only Gradient (Leaves upper 75% of image 100% clear & open!) */}
+        {/* Soft Bottom-Only Gradient */}
         <div 
           style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(to bottom, transparent 0%, transparent 45%, rgba(22,20,18,0.7) 80%, rgba(22,20,18,0.95) 100%)',
+            background: 'linear-gradient(to bottom, transparent 0%, transparent 40%, rgba(22,20,18,0.7) 78%, rgba(22,20,18,0.96) 100%)',
             pointerEvents: 'none'
           }}
         />
@@ -80,9 +75,9 @@ export default function Hero({ onOpenLightbox }) {
           gap: '0.6rem',
           background: 'rgba(250, 247, 242, 0.15)',
           backdropFilter: 'blur(16px)',
-          padding: '0.5rem 1.2rem',
+          padding: '0.5rem 1.3rem',
           borderRadius: '30px',
-          border: '1px solid rgba(250, 247, 242, 0.3)',
+          border: '1px solid rgba(250, 247, 242, 0.28)',
           color: '#FAF7F2',
           fontSize: '0.78rem',
           letterSpacing: '0.14em',
@@ -90,17 +85,64 @@ export default function Hero({ onOpenLightbox }) {
         }}
       >
         <Star size={14} fill="var(--accent-gold)" color="var(--accent-gold)" />
-        <span>Dua Mehavish • pathu 18.jpeg</span>
+        <span>Dua Mehavish • Fine Art Photography</span>
       </div>
 
-      {/* Hero Text & CTA Block - Positioned Strictly at Bottom so Face is 100% Open & Visible */}
+      {/* Flagship Thumbnail Selector */}
+      <div
+        className="hero-stamp-selector"
+        style={{
+          position: 'absolute',
+          top: '6rem',
+          right: '3.5rem',
+          zIndex: 10,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.6rem',
+          background: 'rgba(22, 20, 18, 0.65)',
+          backdropFilter: 'blur(16px)',
+          padding: '0.4rem 0.6rem',
+          borderRadius: '30px',
+          border: '1px solid rgba(197, 168, 128, 0.3)'
+        }}
+      >
+        {heroShowcasePhotos.map((p, i) => (
+          <button
+            key={p.id}
+            onClick={() => setCurrentIdx(i)}
+            style={{
+              width: '38px',
+              height: '38px',
+              borderRadius: '50%',
+              overflow: 'hidden',
+              border: i === currentIdx ? '2px solid var(--accent-gold)' : '2px solid transparent',
+              cursor: 'pointer',
+              padding: 0,
+              background: 'none',
+              transform: i === currentIdx ? 'scale(1.15)' : 'scale(1)',
+              transition: 'all 0.3s ease',
+              opacity: i === currentIdx ? 1 : 0.65
+            }}
+            title={p.title}
+          >
+            <img 
+              src={p.src} 
+              onError={(e) => { if (p.altSrc) e.currentTarget.src = p.altSrc; }}
+              alt={p.title} 
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+            />
+          </button>
+        ))}
+      </div>
+
+      {/* Hero Text & CTA Block */}
       <div 
         className="hero-content"
         style={{
           position: 'relative',
           zIndex: 10,
           width: '100%',
-          maxWidth: '900px',
+          maxWidth: '920px',
           margin: '0 auto 3.5rem',
           textAlign: 'center',
           padding: '0 2rem'
@@ -109,66 +151,101 @@ export default function Hero({ onOpenLightbox }) {
         <h1 
           className="hero-title"
           style={{
-            fontSize: 'clamp(2.4rem, 5vw, 4.5rem)',
+            fontSize: 'clamp(2.4rem, 5.2vw, 4.6rem)',
             fontWeight: '300',
-            lineHeight: '1.05',
+            lineHeight: '1.06',
             color: 'var(--text-light)',
             marginBottom: '0.8rem',
-            textShadow: '0 3px 15px rgba(0,0,0,0.6)'
+            textShadow: '0 4px 20px rgba(0,0,0,0.6)'
           }}
         >
-          <span style={{ fontSize: '0.45em', display: 'block', textTransform: 'uppercase', letterSpacing: '0.22em', color: 'var(--accent-gold)', marginBottom: '0.2rem', fontFamily: 'var(--font-sans)', fontWeight: '500' }}>
-            Dua Mehavish
+          <span style={{ fontSize: '0.42em', display: 'block', textTransform: 'uppercase', letterSpacing: '0.24em', color: 'var(--accent-gold)', marginBottom: '0.3rem', fontFamily: 'var(--font-sans)', fontWeight: '600' }}>
+            DUA MEHAVISH • MEMORY STORYBOOK
           </span>
-          Little Moments. <span style={{ fontStyle: 'italic', fontWeight: '300', color: 'var(--accent-gold)' }}>Big Memories.</span>
+          Little Moments. <span style={{ fontStyle: 'italic', fontWeight: '300', color: 'var(--accent-gold)' }}>Eternal Memories.</span>
         </h1>
 
         <p 
           style={{
             fontSize: '1.05rem',
-            color: 'rgba(250, 247, 242, 0.88)',
-            maxWidth: '600px',
+            color: 'rgba(250, 247, 242, 0.9)',
+            maxWidth: '620px',
             margin: '0 auto 1.8rem',
-            lineHeight: '1.6',
+            lineHeight: '1.65',
             fontWeight: '300',
             textShadow: '0 2px 8px rgba(0,0,0,0.6)'
           }}
         >
-          An editorial photography storybook celebrating pure wonder and unscripted smiles.
+          A luxury digital storybook celebrating pure wonder, sunlit smiles, and the timeless beauty of childhood.
         </p>
 
-        <button
-          onClick={() => onOpenLightbox(photo)}
-          style={{
-            background: 'var(--accent-gold)',
-            border: 'none',
-            color: '#161412',
-            padding: '0.8rem 2.2rem',
-            borderRadius: '40px',
-            fontFamily: 'var(--font-sans)',
-            fontSize: '0.85rem',
-            fontWeight: '600',
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            cursor: 'pointer',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.6rem',
-            boxShadow: 'var(--shadow-gold)',
-            transition: 'all 0.3s ease'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(-2px)';
-            e.currentTarget.style.boxShadow = '0 12px 30px rgba(212, 175, 55, 0.4)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = 'var(--shadow-gold)';
-          }}
-        >
-          <Maximize2 size={16} />
-          <span>Expand pathu 18.jpeg</span>
-        </button>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+          <button
+            onClick={() => onOpenLightbox(heroPhoto)}
+            style={{
+              background: 'var(--accent-gold)',
+              border: 'none',
+              color: '#161412',
+              padding: '0.85rem 2.2rem',
+              borderRadius: '40px',
+              fontFamily: 'var(--font-sans)',
+              fontSize: '0.85rem',
+              fontWeight: '600',
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.6rem',
+              boxShadow: 'var(--shadow-gold)',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 12px 30px rgba(212, 175, 55, 0.45)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = 'var(--shadow-gold)';
+            }}
+          >
+            <Maximize2 size={16} />
+            <span>Expand Portrait</span>
+          </button>
+
+          <a
+            href="#gallery"
+            style={{
+              background: 'rgba(250, 247, 242, 0.12)',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(250, 247, 242, 0.3)',
+              color: '#FAF7F2',
+              padding: '0.85rem 2rem',
+              borderRadius: '40px',
+              fontFamily: 'var(--font-sans)',
+              fontSize: '0.85rem',
+              fontWeight: '500',
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              textDecoration: 'none',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.6rem',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(250, 247, 242, 0.22)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(250, 247, 242, 0.12)';
+              e.currentTarget.style.transform = 'translateY(0)';
+            }}
+          >
+            <Sparkles size={16} color="var(--accent-gold)" />
+            <span>View All 18 Stories</span>
+          </a>
+        </div>
       </div>
 
       {/* Scroll Down Indicator */}
