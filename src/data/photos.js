@@ -1,9 +1,12 @@
+// Base URL resolution for dynamic environments (Local Dev, GitHub Pages, Custom Domains)
+const BASE = import.meta.env.BASE_URL ? (import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`) : './';
+
 // Master Collection of all 18 child photographs of Dua Mehavish with curated metadata, editorial stories, and classic handwritten notes
 export const photos = [
   {
     id: 1,
-    src: '/photos/pathu-1.jpeg',
-    altSrc: '/photos/pathu 1.jpeg',
+    src: `${BASE}photos/pathu-1.jpeg`,
+    altSrc: `${BASE}photos/pathu 1.jpeg`,
     title: 'Sunlight & Smiles',
     subtitle: 'Chapter I — Pure Wonder',
     date: 'Autumn • Golden Hour',
@@ -15,8 +18,8 @@ export const photos = [
   },
   {
     id: 2,
-    src: '/photos/pathu-2.jpeg',
-    altSrc: '/photos/pathu 2.jpeg',
+    src: `${BASE}photos/pathu-2.jpeg`,
+    altSrc: `${BASE}photos/pathu 2.jpeg`,
     title: 'Innocence & Wonder',
     subtitle: 'Chapter I — Pure Wonder',
     date: 'Spring Morning',
@@ -28,8 +31,8 @@ export const photos = [
   },
   {
     id: 3,
-    src: '/photos/pathu-3.jpeg',
-    altSrc: '/photos/pathu 3.jpeg',
+    src: `${BASE}photos/pathu-3.jpeg`,
+    altSrc: `${BASE}photos/pathu 3.jpeg`,
     title: 'Meadow Whispers',
     subtitle: 'Chapter II — Sunlit Moments',
     date: 'Summer Afternoon',
@@ -41,8 +44,8 @@ export const photos = [
   },
   {
     id: 4,
-    src: '/photos/pathu-4.jpeg',
-    altSrc: '/photos/pathu 4.jpeg',
+    src: `${BASE}photos/pathu-4.jpeg`,
+    altSrc: `${BASE}photos/pathu 4.jpeg`,
     title: 'Summer Breeze & Petals',
     subtitle: 'Chapter II — Sunlit Moments',
     date: 'Summer Twilight',
@@ -54,8 +57,8 @@ export const photos = [
   },
   {
     id: 5,
-    src: '/photos/pathu-5.jpeg',
-    altSrc: '/photos/pathu 5.jpeg',
+    src: `${BASE}photos/pathu-5.jpeg`,
+    altSrc: `${BASE}photos/pathu 5.jpeg`,
     title: 'Unfiltered Joy',
     subtitle: 'Chapter II — Sunlit Moments',
     date: 'May Afternoon',
@@ -67,8 +70,8 @@ export const photos = [
   },
   {
     id: 6,
-    src: '/photos/pathu-6.jpeg',
-    altSrc: '/photos/pathu 6.jpeg',
+    src: `${BASE}photos/pathu-6.jpeg`,
+    altSrc: `${BASE}photos/pathu 6.jpeg`,
     title: 'Laughter in Motion',
     subtitle: 'Chapter III — Timeless Smiles',
     date: 'Golden Hour',
@@ -80,8 +83,8 @@ export const photos = [
   },
   {
     id: 7,
-    src: '/photos/pathu-7.jpeg',
-    altSrc: '/photos/pathu 7.jpeg',
+    src: `${BASE}photos/pathu-7.jpeg`,
+    altSrc: `${BASE}photos/pathu 7.jpeg`,
     title: 'The Little Explorer',
     subtitle: 'Chapter III — Timeless Smiles',
     date: 'July Sunshine',
@@ -93,8 +96,8 @@ export const photos = [
   },
   {
     id: 8,
-    src: '/photos/pathu-8.jpeg',
-    altSrc: '/photos/pathu 8.jpeg',
+    src: `${BASE}photos/pathu-8.jpeg`,
+    altSrc: `${BASE}photos/pathu 8.jpeg`,
     title: 'Dreamer’s Pause',
     subtitle: 'Chapter III — Timeless Smiles',
     date: 'September Twilight',
@@ -106,8 +109,8 @@ export const photos = [
   },
   {
     id: 9,
-    src: '/photos/pathu-9.jpeg',
-    altSrc: '/photos/pathu 9.jpeg',
+    src: `${BASE}photos/pathu-9.jpeg`,
+    altSrc: `${BASE}photos/pathu 9.jpeg`,
     title: 'Serenity & Grace',
     subtitle: 'Chapter III — Timeless Smiles',
     date: 'October Breeze',
@@ -119,8 +122,8 @@ export const photos = [
   },
   {
     id: 10,
-    src: '/photos/pathu-10.jpeg',
-    altSrc: '/photos/pathu 10.jpeg',
+    src: `${BASE}photos/pathu-10.jpeg`,
+    altSrc: `${BASE}photos/pathu 10.jpeg`,
     title: 'Spark of Wonder',
     subtitle: 'Chapter IV — Whisper of Dreams',
     date: 'Early Dawn',
@@ -132,8 +135,8 @@ export const photos = [
   },
   {
     id: 11,
-    src: '/photos/pathu-11.jpeg',
-    altSrc: '/photos/pathu 11.jpeg',
+    src: `${BASE}photos/pathu-11.jpeg`,
+    altSrc: `${BASE}photos/pathu 11.jpeg`,
     title: 'Quiet Sunset Gaze',
     subtitle: 'Chapter IV — Whisper of Dreams',
     date: 'Warm Dusk',
@@ -145,8 +148,8 @@ export const photos = [
   },
   {
     id: 12,
-    src: '/photos/pathu-12.jpeg',
-    altSrc: '/photos/pathu 12.jpeg',
+    src: `${BASE}photos/pathu-12.jpeg`,
+    altSrc: `${BASE}photos/pathu 12.jpeg`,
     title: 'Timeless Golden Glance',
     subtitle: 'Chapter IV — Whisper of Dreams',
     date: 'Golden Glow',
@@ -158,8 +161,8 @@ export const photos = [
   },
   {
     id: 13,
-    src: '/photos/pathu-13.jpeg',
-    altSrc: '/photos/pathu 13.jpeg',
+    src: `${BASE}photos/pathu-13.jpeg`,
+    altSrc: `${BASE}photos/pathu 13.jpeg`,
     title: 'Golden Radiance Portrait',
     subtitle: 'Chapter I — Pure Wonder',
     date: 'First Light',
@@ -171,8 +174,8 @@ export const photos = [
   },
   {
     id: 14,
-    src: '/photos/pathu-14.jpeg',
-    altSrc: '/photos/pathu 14.jpeg',
+    src: `${BASE}photos/pathu-14.jpeg`,
+    altSrc: `${BASE}photos/pathu 14.jpeg`,
     title: 'Velvet Sunbeams',
     subtitle: 'Chapter V — Eternal Memories',
     date: 'Late Afternoon',
@@ -184,8 +187,8 @@ export const photos = [
   },
   {
     id: 15,
-    src: '/photos/pathu-15.jpeg',
-    altSrc: '/photos/pathu 15.jpeg',
+    src: `${BASE}photos/pathu-15.jpeg`,
+    altSrc: `${BASE}photos/pathu 15.jpeg`,
     title: 'Gentle Warmth & Love',
     subtitle: 'Chapter V — Eternal Memories',
     date: 'Warm Sunset',
@@ -197,8 +200,8 @@ export const photos = [
   },
   {
     id: 16,
-    src: '/photos/pathu-16.jpeg',
-    altSrc: '/photos/pathu 16.jpeg',
+    src: `${BASE}photos/pathu-16.jpeg`,
+    altSrc: `${BASE}photos/pathu 16.jpeg`,
     title: 'Fairytale Melody',
     subtitle: 'Chapter V — Eternal Memories',
     date: 'Summer Glow',
@@ -210,8 +213,8 @@ export const photos = [
   },
   {
     id: 17,
-    src: '/photos/pathu-17.jpeg',
-    altSrc: '/photos/pathu 17.jpeg',
+    src: `${BASE}photos/pathu-17.jpeg`,
+    altSrc: `${BASE}photos/pathu 17.jpeg`,
     title: 'Forever Dua',
     subtitle: 'Grand Finale — Timeless Love',
     date: 'Twilight',
@@ -223,8 +226,8 @@ export const photos = [
   },
   {
     id: 18,
-    src: '/photos/pathu-18.jpeg',
-    altSrc: '/photos/pathu 18.jpeg',
+    src: `${BASE}photos/pathu-18.jpeg`,
+    altSrc: `${BASE}photos/pathu 18.jpeg`,
     title: 'The Crown Portrait',
     subtitle: 'Chapter I — Pure Wonder',
     date: 'Golden Dawn',
