@@ -991,10 +991,10 @@ h1, h2, h3, h4, .font-serif {
 }
 
 /* ==========================================================================
-   MUSEUM PASSE-PARTOUT RETROSPECTIVE GALLERY (THE 18 PLATES)
+   VINTAGE KEEPSAKE POLAROID RETROSPECTIVE (THE 18 PLATES)
    ========================================================================== */
 .museum-gallery-section {
-  padding: 9.5rem 3.5rem;
+  padding: 9rem 3.5rem;
   background: radial-gradient(ellipse at 50% 12%, #F5EDE0 0%, var(--bg-primary) 70%);
   position: relative;
   width: 100%;
@@ -1003,7 +1003,7 @@ h1, h2, h3, h4, .font-serif {
 .museum-editorial-header {
   text-align: center;
   max-width: 880px;
-  margin: 0 auto 4rem;
+  margin: 0 auto 3.5rem;
   padding: 0 1rem;
 }
 
@@ -1060,21 +1060,18 @@ h1, h2, h3, h4, .font-serif {
   margin: 0 auto;
 }
 
-/* Controls Bar */
-.museum-controls-bar {
-  max-width: 1440px;
-  margin: 0 auto 2.5rem;
+/* Centered Filter Tabs */
+.polaroid-filter-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
 }
 
 .museum-filter-tabs {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .museum-filter-btn {
@@ -1119,373 +1116,53 @@ h1, h2, h3, h4, .font-serif {
   color: #161412;
 }
 
-.museum-extra-controls {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-}
-
-.museum-search-box {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  background: #FFFDF9;
-  border: 1px solid rgba(197, 168, 128, 0.4);
-  padding: 0.5rem 1.1rem;
-  border-radius: 30px;
-  box-shadow: 0 2px 10px rgba(36, 32, 28, 0.04);
-}
-
-.museum-search-input {
-  border: none;
-  background: none;
-  outline: none;
-  font-size: 0.88rem;
-  color: var(--text-primary);
-  font-family: var(--font-sans);
-  width: 160px;
-  transition: width 0.3s;
-}
-
-.museum-search-input:focus {
-  width: 210px;
-}
-
-.museum-clear-btn {
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  cursor: pointer;
-  font-size: 0.8rem;
-}
-
-.museum-layout-switcher {
-  display: flex;
-  background: #FFFDF9;
-  border: 1px solid rgba(197, 168, 128, 0.4);
-  border-radius: 30px;
-  padding: 3px;
-}
-
-.layout-switch-btn {
-  background: none;
-  border: none;
-  padding: 0.45rem 1rem;
-  border-radius: 24px;
-  color: var(--text-secondary);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  transition: all 0.3s;
-}
-
-.layout-switch-btn.active {
-  background: var(--text-primary);
-  color: var(--text-light);
-}
-
 .museum-status-bar {
   max-width: 1440px;
-  margin: 0 auto 2.5rem;
+  margin: 0 auto 3rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
+  justify-content: center;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text-muted);
   border-bottom: 1px solid rgba(197, 168, 128, 0.2);
-  padding-bottom: 0.8rem;
+  padding-bottom: 1rem;
 }
 
 /* =========================================================================
-   VIEW 1: ARCHIVAL PASSE-PARTOUT GALLERY PLATES
-   ========================================================================= */
-.museum-plates-grid {
-  max-width: 1440px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  gap: 3.5rem;
-}
-
-.museum-plate-card {
-  background: #FCFAF6;
-  border: 1px solid rgba(197, 168, 128, 0.32);
-  border-radius: 12px;
-  box-shadow: var(--shadow-plate);
-  cursor: pointer;
-  overflow: hidden;
-  transition: transform 0.5s var(--ease-cinematic), box-shadow 0.5s var(--ease-cinematic), border-color 0.4s;
-  position: relative;
-}
-
-.museum-plate-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 28px 65px rgba(36, 32, 28, 0.16);
-  border-color: var(--accent-champagne);
-}
-
-.passe-partout-frame {
-  padding: 20px 20px 0 20px;
-  background: #FCFAF6;
-}
-
-.inner-matting-box {
-  padding: 10px;
-  border: 1px solid rgba(212, 175, 55, 0.25);
-  background: #FFFDF9;
-  border-radius: 6px;
-  box-shadow: inset 0 2px 8px rgba(36, 32, 28, 0.04);
-}
-
-.plate-img-wrapper {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  border-radius: 4px;
-}
-
-.plate-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 1s var(--ease-cinematic);
-}
-
-.museum-plate-card:hover .plate-img {
-  transform: scale(1.06);
-}
-
-.plate-hover-lens {
-  position: absolute;
-  inset: 0;
-  background: rgba(22, 20, 18, 0.4);
-  backdrop-filter: blur(3px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.4s var(--ease-cinematic);
-}
-
-.museum-plate-card:hover .plate-hover-lens {
-  opacity: 1;
-}
-
-.lens-brass-ring {
-  background: rgba(250, 247, 242, 0.95);
-  border: 1px solid var(--accent-gold);
-  color: #161412;
-  padding: 0.55rem 1.2rem;
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  box-shadow: var(--shadow-gold);
-  transform: translateY(10px);
-  transition: transform 0.4s var(--ease-cinematic);
-}
-
-.museum-plate-card:hover .lens-brass-ring {
-  transform: translateY(0);
-}
-
-/* Plaque Typography */
-.museum-plaque {
-  padding: 1.6rem 1.8rem 1.8rem;
-  text-align: center;
-  background: #FCFAF6;
-  border-top: 1px solid rgba(197, 168, 128, 0.15);
-}
-
-.plaque-top-meta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  font-size: 0.76rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent-gold-dark);
-  font-weight: 600;
-  margin-bottom: 0.4rem;
-}
-
-.plate-dot {
-  opacity: 0.5;
-}
-
-.plate-title {
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
-  color: var(--text-primary);
-  margin-bottom: 0.4rem;
-}
-
-.plate-annotation-box {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 0.2rem;
-}
-
-.plate-quote-mark {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  color: var(--accent-champagne);
-  line-height: 0;
-}
-
-.plate-handwritten {
-  font-family: var(--font-handwritten);
-  font-size: 1.25rem;
-  color: var(--accent-gold-dark);
-  line-height: 1.3;
-}
-
-/* =========================================================================
-   VIEW 2: LINEN STORYBOOK ALBUM SPREAD
-   ========================================================================= */
-.album-spread-grid {
-  max-width: 1440px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
-  gap: 3.5rem;
-}
-
-.album-page-card {
-  background: #FAF6EE;
-  border: 1px solid rgba(197, 168, 128, 0.4);
-  border-radius: 12px;
-  padding: 2.2rem;
-  box-shadow: 0 18px 45px rgba(36, 32, 28, 0.08);
-  cursor: pointer;
-  transition: transform 0.5s var(--ease-cinematic), box-shadow 0.5s;
-}
-
-.album-page-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 25px 60px rgba(36, 32, 28, 0.15);
-}
-
-.album-photo-mount {
-  position: relative;
-  padding: 8px;
-  background: #FFFDF9;
-  border: 1px solid rgba(197, 168, 128, 0.25);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-  border-radius: 4px;
-}
-
-.photo-corner {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border-color: var(--accent-gold);
-  border-style: solid;
-  z-index: 5;
-}
-.corner-tl { top: 0; left: 0; border-width: 3px 0 0 3px; }
-.corner-tr { top: 0; right: 0; border-width: 3px 3px 0 0; }
-.corner-bl { bottom: 0; left: 0; border-width: 0 0 3px 3px; }
-.corner-br { bottom: 0; right: 0; border-width: 0 3px 3px 0; }
-
-.album-photo-box {
-  width: 100%;
-  overflow: hidden;
-}
-
-.album-photo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.8s;
-}
-
-.album-page-card:hover .album-photo-img {
-  transform: scale(1.05);
-}
-
-.album-text-panel {
-  margin-top: 1.6rem;
-  text-align: center;
-}
-
-.album-plate-tag {
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent-gold-dark);
-  font-weight: 600;
-  margin-bottom: 0.3rem;
-}
-
-.album-photo-title {
-  font-family: var(--font-serif);
-  font-size: 1.65rem;
-  color: var(--text-primary);
-  margin-bottom: 0.3rem;
-}
-
-.album-handwritten-note {
-  font-family: var(--font-handwritten);
-  font-size: 1.25rem;
-  color: var(--accent-gold-dark);
-  margin-bottom: 0.6rem;
-}
-
-.album-date-badge {
-  display: inline-block;
-  font-size: 0.72rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  border-top: 1px solid rgba(197, 168, 128, 0.3);
-  padding-top: 0.4rem;
-}
-
-/* =========================================================================
-   VIEW 3: VINTAGE KEEPSAKE POLAROID GRID
+   VINTAGE KEEPSAKE POLAROID GRID (ALL 18 POLAROIDS)
    ========================================================================= */
 .vintage-keepsake-grid {
   max-width: 1440px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-  gap: 3.5rem;
-  padding: 1.5rem 0;
+  gap: 4rem 3rem;
+  padding: 1rem 0;
 }
 
 .vintage-polaroid-frame {
   background: #FFFDF9;
-  padding: 16px 16px 24px;
-  border-radius: 12px;
+  padding: 16px 16px 26px;
+  border-radius: 14px;
   box-shadow: var(--shadow-polaroid);
   border: 1px solid rgba(197, 168, 128, 0.25);
   cursor: pointer;
   position: relative;
-  transition: transform 0.5s var(--ease-cinematic), box-shadow 0.5s;
+  transition: transform 0.5s var(--ease-cinematic), box-shadow 0.5s, z-index 0.1s;
 }
 
 .vintage-polaroid-frame:hover {
   transform: scale(1.06) rotate(0deg) !important;
   z-index: 10;
   box-shadow: 0 25px 60px rgba(36, 32, 28, 0.25);
+  border-color: var(--accent-gold);
 }
 
 .polaroid-pin-accent {
   position: absolute;
-  top: -8px;
+  top: -9px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 5;
@@ -1493,17 +1170,18 @@ h1, h2, h3, h4, .font-serif {
 
 .pin-pearl {
   display: block;
-  width: 14px;
-  height: 14px;
+  width: 15px;
+  height: 15px;
   background: radial-gradient(circle at 35% 35%, #FFE28A, #B38600);
   border-radius: 50%;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.35);
 }
 
 .polaroid-photo-inner {
+  position: relative;
   width: 100%;
   aspect-ratio: 1 / 1.15;
-  border-radius: 6px;
+  border-radius: 8px;
   overflow: hidden;
   background: #EAE3D6;
 }
@@ -1512,16 +1190,41 @@ h1, h2, h3, h4, .font-serif {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.8s;
+  transition: transform 0.8s var(--ease-cinematic);
 }
 
 .vintage-polaroid-frame:hover .vintage-polaroid-img {
   transform: scale(1.08);
 }
 
+.polaroid-hover-lens-badge {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(22, 20, 18, 0.75);
+  color: var(--accent-gold);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all 0.3s var(--ease-cinematic);
+}
+
+.vintage-polaroid-frame:hover .polaroid-hover-lens-badge {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .polaroid-caption-panel {
-  padding-top: 14px;
+  padding-top: 16px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
 .polaroid-roman-tag {
@@ -1529,21 +1232,21 @@ h1, h2, h3, h4, .font-serif {
   letter-spacing: 0.16em;
   color: var(--accent-gold-dark);
   font-weight: 700;
-  margin-bottom: 2px;
+  text-transform: uppercase;
 }
 
 .polaroid-photo-name {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   color: var(--text-primary);
   font-weight: 500;
 }
 
 .polaroid-cursive-text {
   font-family: var(--font-handwritten);
-  font-size: 1.15rem;
+  font-size: 1.18rem;
   color: var(--accent-gold-dark);
-  margin-top: 2px;
+  line-height: 1.25;
 }
 
 /* ==========================================================================
@@ -1868,13 +1571,9 @@ h1, h2, h3, h4, .font-serif {
   .floating-side-column {
     display: none;
   }
-  .museum-plates-grid {
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 2.5rem;
-  }
-  .album-spread-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
+  .vintage-keepsake-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 3rem 2rem;
   }
 }
 
@@ -1983,58 +1682,20 @@ h1, h2, h3, h4, .font-serif {
     padding: 0.35rem 0.8rem;
   }
 
-  /* Museum Gallery Mobile Tuning */
+  /* Polaroid Grid Mobile Tuning */
   .museum-gallery-section {
     padding: 4.5rem 1rem;
-  }
-  .museum-controls-bar {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 1rem;
   }
   .museum-filter-tabs {
     justify-content: center;
   }
   .museum-filter-btn {
     font-size: 0.78rem;
-    padding: 0.5rem 1rem;
+    padding: 0.45rem 0.9rem;
   }
-  .museum-extra-controls {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .museum-search-box {
-    width: 100%;
-  }
-  .museum-search-input {
-    width: 100%;
-  }
-  .museum-search-input:focus {
-    width: 100%;
-  }
-  .museum-layout-switcher {
-    justify-content: center;
-  }
-  .museum-status-bar {
-    flex-direction: column;
-    gap: 0.4rem;
-    text-align: center;
-  }
-  .museum-plates-grid, .album-spread-grid {
+  .vintage-keepsake-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  .passe-partout-frame {
-    padding: 12px 12px 0 12px;
-  }
-  .museum-plaque {
-    padding: 1.2rem 1rem;
-  }
-  .plate-title {
-    font-size: 1.35rem;
-  }
-  .plate-handwritten {
-    font-size: 1.1rem;
+    gap: 2.8rem;
   }
 
   /* Film Strip Mobile Tuning */
