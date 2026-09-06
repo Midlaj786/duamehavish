@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { photos } from './data/photos';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -16,12 +16,43 @@ import CustomCursor from './components/CustomCursor';
 export default function App() {
   const [activePhoto, setActivePhoto] = useState(null);
 
+  // Clean initial URL hash if page was refreshed with #lightbox
+  useEffect(() => {
+    if (window.location.hash.includes('lightbox')) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+  }, []);
+
+  // Listen for browser / mobile back button (popstate)
+  useEffect(() => {
+    const handlePopState = (e) => {
+      if (!window.location.hash.includes('lightbox')) {
+        setActivePhoto(null);
+      } else if (e.state?.photoId) {
+        const found = photos.find(p => p.id === e.state.photoId);
+        if (found) setActivePhoto(found);
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   const handleOpenLightbox = (photo) => {
     setActivePhoto(photo);
+    if (!window.location.hash.includes('lightbox')) {
+      window.history.pushState({ modal: 'lightbox', photoId: photo.id }, '', '#lightbox');
+    } else {
+      window.history.replaceState({ modal: 'lightbox', photoId: photo.id }, '', '#lightbox');
+    }
   };
 
   const handleCloseLightbox = () => {
-    setActivePhoto(null);
+    if (window.location.hash.includes('lightbox')) {
+      window.history.back();
+    } else {
+      setActivePhoto(null);
+    }
   };
 
   const handleNavigateLightbox = (direction) => {
@@ -33,7 +64,9 @@ export default function App() {
     } else {
       nextIndex = (currentIndex - 1 + photos.length) % photos.length;
     }
-    setActivePhoto(photos[nextIndex]);
+    const nextPhoto = photos[nextIndex];
+    setActivePhoto(nextPhoto);
+    window.history.replaceState({ modal: 'lightbox', photoId: nextPhoto.id }, '', '#lightbox');
   };
 
   const storybookPhoto = photos.find(p => p.id === 2) || photos[1];
