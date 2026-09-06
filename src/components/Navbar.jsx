@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import AudioPlayer from './AudioPlayer';
 import { Sparkles, Menu, X } from 'lucide-react';
 
 export default function Navbar() {
@@ -66,8 +65,6 @@ export default function Navbar() {
       </nav>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-        <AudioPlayer />
-        
         {/* Mobile Menu Toggle Button */}
         <button
           className="mobile-nav-toggle"
